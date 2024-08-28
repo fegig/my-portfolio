@@ -31,4 +31,23 @@
     @apply origin-center -rotate-45 top-1/2;
    }
 
+   .smooth{
+      @apply transition-all duration-300
+   }
+   ::-moz-selection { /* Code for Firefox */
+      @apply text-primary-alt bg-color-1; 
+    }
+    
+    ::selection {
+      @apply text-primary-alt bg-color-1; 
+    }
+    .frag{
+      @apply text-gray-300 smooth
+    }
+    .component{
+      @apply text-blue-500 font-semibold
+    }
+    code{
+      @apply bg-neutral-900 rounded-2xl text-base max-md:text-xs  my-2  border px-4 py-2 border-sky-950 text-white hover:text-neutral-900 hover:bg-neutral-100 smooth
+}
 }
