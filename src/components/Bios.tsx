@@ -49,7 +49,6 @@ export default function Bios() {
     useEffect(() => {
         if (activeBiosInfo) {
             const w = activeBiosInfo.id * 100 / biosInfo.length;
-            console.log("w", w);
             setProgress(w);
         }
     }, [activeBiosInfo]);
@@ -58,11 +57,11 @@ export default function Bios() {
         <section className='bg-neutral-900 lg:py-16 pt-10 snap-start'>
             <div className='container flex flex-wrap items-center justify-evenly space-y-2 mx-auto'>
               <div className='flex justify-between items-center flex-wrap max-w-screen-sm max-md:container space-y-2 '>
-                <div className={`md:h-[400px] md:w-3 w-[400px] h-3 bg-color-1 rounded-lg mx-10`}>
+                <div className={`md:h-[400px] md:w-3 w-[400px] h-3 bg-color-1 rounded-lg mx-10`} data-aos="fade-right"     data-aos-offset="300"     data-aos-easing="ease-in-sine">
                     <div className={`md:h-1/4 h-full w-1/4 md:w-full max-md:hidden ${activeColor} rounded-lg smooth`} style={{ height: `${progress}%` }} />
                     <div className={`md:h-1/4 h-full w-1/4 md:hidden   ${activeColor} rounded-lg smooth`} style={{ width: `${progress}%` }} />
                 </div>
-                <div className='flex md:flex-col items-center justify-evenly md:space-y-4 flex-wrap'>
+                <div className='flex md:flex-col items-center justify-evenly md:space-y-4 flex-wrap' data-aos="fade-right"     data-aos-offset="100"     data-aos-easing="ease-in-sine">
                     {
                         biosInfo.map((bios) => {
 
@@ -86,8 +85,8 @@ export default function Bios() {
                 </div>
 
                 <div className='md:w-[768px]'>
-                    <div className='flex '>
-                        <div className={`flex flex-col ${activeColor} p-16 mx-auto rounded text-primary smooth`}>
+                    <div className='flex ' data-aos="fade-left"     data-aos-offset="100"     data-aos-easing="ease-in-sine">
+                        <div className={`flex flex-col ${activeColor} p-16 mx-auto rounded text-primary smooth`} >
                             <div className='font-bold text-4xl smooth'>
                                 {activeBiosInfo?.name}
                             </div>
@@ -97,7 +96,7 @@ export default function Bios() {
 
 
                         </div>
-                        <div className='md:self-center flex self-end md:-ml-14 max-md:absolute'>
+                        <div className='md:self-center flex self-end md:-ml-14 max-md:absolute w-full justify-center -mb-10'>
                             <img src='/assets/dots.svg' className='md:min-w-[150px]' />
                         </div>
                     </div>
