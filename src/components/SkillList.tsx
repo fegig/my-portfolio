@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SkillList() {
   return (
-    <section className="flex-grow flex flex-wrap bg-color-1 w-full  py-16 ">
+    <section className="grow flex flex-wrap bg-background-100 w-full  py-16 ">
     <div className="flex  justify-evenly items-center mx-auto my-6 flex-wrap gap-x-2 gap-y-4 max-w-screen-xl py-4">
       <div className=" my-0 mx-auto m-0 p-5 max-w-[450px]" >
         <img loading="lazy" alt="image" role="presentation" src={'assets/skill.jpg'} />

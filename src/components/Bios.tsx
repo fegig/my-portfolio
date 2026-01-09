@@ -54,8 +54,8 @@ export default function Bios() {
     }, [activeBiosInfo]);
 
     return (
-        <section className='bg-neutral-900 lg:py-16 pt-10 snap-start'>
-            <div className='container flex flex-wrap items-center justify-evenly space-y-2 mx-auto'>
+        <section className='bg-background-100 lg:py-16 pt-10 snap-start'>
+            <div className='container mx-auto flex flex-wrap items-center justify-evenly space-y-2'>
               <div className='flex justify-between items-center flex-wrap max-w-screen-sm max-md:container space-y-2 '>
                 <div className={`md:h-[400px] md:w-3 w-[400px] h-3 bg-color-1 rounded-lg mx-10`} data-aos="fade-right"     data-aos-offset="300"     data-aos-easing="ease-in-sine">
                     <div className={`md:h-1/4 h-full w-1/4 md:w-full max-md:hidden ${activeColor} rounded-lg smooth`} style={{ height: `${progress}%` }} />
@@ -86,7 +86,7 @@ export default function Bios() {
 
                 <div className='md:w-[768px]'>
                     <div className='flex ' data-aos="fade-left"     data-aos-offset="100"     data-aos-easing="ease-in-sine">
-                        <div className={`flex flex-col ${activeColor} p-16 mx-auto rounded text-primary smooth`} >
+                        <div className={`flex flex-col ${activeColor} p-16 mx-auto rounded text-foreground-100 smooth`} >
                             <div className='font-bold text-4xl smooth'>
                                 {activeBiosInfo?.name}
                             </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 const Stacks = () => {
 
     const stacks = [{name: "HTML", icon: "html.png"}, 
@@ -18,11 +19,17 @@ const Stacks = () => {
                  {name: "Canva", icon:"canva.png"}];
                  ;
     return ( <>
-    <div className=" flex space-x-2 my-2 flex-wrap items-center max-lg:justify-center">
-        {stacks.map(stack => (
-            <div className=" w-6 mb-2" key={stack.name}>
+    <div 
+
+    className=" flex space-x-2 my-2 flex-wrap items-center max-lg:justify-center">
+        {stacks.map((stack, index) => (
+            <motion.div className=" w-6 mb-2" key={stack.name}
+            initial={{ opacity: 0, y: 20 * index/stacks.length }}
+            animate={{ opacity: 1, y: 0 * index/stacks.length }}
+            transition={{ duration: 0.3 * index/stacks.length }}
+            >
             <img src={"/icons/"+stack.icon} alt={stack.name} className="grayscale-0 w-full h-full  smooth hover:grayscale" />
-            </div>
+            </motion.div>
         ))}
 
 

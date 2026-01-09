@@ -1,6 +1,54 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@theme {
+  --color-color-1: #FFECEF;
+  --color-color-2: #2A3958;
+  --color-color-alt: #485f8f;
+  --color-primary: #FFECEF;
+  --color-primary-alt: #485f8f;
+  --color-secondary: #2A3958;
+
+  --color-background-100: #121212;
+  --color-background-200: #191817;
+  --color-background-300: #2a2927;
+  --color-foreground-100: #F0E3DE;
+  --color-foreground-200: #FFFDfb90;
+
+  --font-sans: 'Poppins', sans-serif;
+  --font-serif: serif;
+  --font-mono: monospace;
+}
+
+@utility smooth {
+
+  transition: all 0.3s ease-in-out;
+}
+
 
 @layer components {
   .btn-primary{
@@ -31,9 +79,6 @@
     @apply origin-center -rotate-45 top-1/2;
    }
 
-   .smooth{
-      @apply transition-all duration-300
-   }
    ::-moz-selection { /* Code for Firefox */
       @apply text-primary-alt bg-color-1; 
     }
@@ -51,3 +96,4 @@
       @apply bg-neutral-900 rounded-2xl text-base max-md:text-xs  my-2  border px-4 py-2 border-sky-950 text-white hover:text-neutral-900 hover:bg-neutral-100 smooth
 }
 }
+
