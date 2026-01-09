@@ -241,7 +241,7 @@ export default function Projects() {
                           
                           {/* Content */}
                           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 md:p-10 items-center">
-                            {/* Project Info */}
+                
                             <motion.div
                               initial={{ opacity: 0, x: -30 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -249,7 +249,6 @@ export default function Projects() {
                               className="flex flex-col justify-center space-y-6"
                             >
                      
-                              {/* Project Name */}
                               <motion.h3
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -259,7 +258,6 @@ export default function Projects() {
                                 {project.name}
                               </motion.h3>
 
-                              {/* Description */}
                               <motion.p
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -269,7 +267,6 @@ export default function Projects() {
                                 {project.description}
                               </motion.p>
 
-                              {/* Tech Stack */}
                               <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}

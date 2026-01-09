@@ -28,7 +28,7 @@ const Hero = () => {
            <Stacks/>
              
            <div className="flex justify-start mt-4">
-                <a className='btn-primary text-white px-4 py-2 rounded-md text-xs' href="/assets/Oghenefegor-Idoro-Corporate-Resume.pdf" target="_blank">Download My Resume</a>
+                <a className='btn-primary text-white px-4 py-2 rounded-md text-xs' href="/assets/oghenefegor-idoro-public.pdf" target="_blank">Download My Resume</a>
               </div>
           </div>
           <div className="flex max-lg:order-1 order-2 col-span-1">

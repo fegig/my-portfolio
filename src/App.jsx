@@ -3,6 +3,7 @@ import './App.css'
 import Bios from './components/Bios'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
+import Footer from './components/Footer'
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import Lenis from 'lenis'
@@ -42,6 +43,7 @@ function App() {
       <Hero />
       <Bios />
       <Projects />
+      <Footer />
     </div>
   )
 }
