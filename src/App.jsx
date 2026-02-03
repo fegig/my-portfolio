@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
 import './App.css'
-import Bios from './components/Bios'
-import Hero from './components/Hero'
-import Projects from './components/Projects'
-import Footer from './components/Footer'
+import 'aos/dist/aos.css';
+import { BrowserRouter, Route, Routes } from 'react-router'
+import Home from './routes';
+import PrivacyPolicy from './routes/quizzer/privacy-policy';
+import QuizzerHome from './routes/quizzer/index';
+import { useEffect } from 'react';
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import Lenis from 'lenis'
-
 function App() {
+
   useEffect(()=>{
     Aos.init();
 
@@ -38,13 +39,17 @@ function App() {
     }
   },[])
 
+
   return (
-    <div className='snap-mandatory snap-y'>
-      <Hero />
-      <Bios />
-      <Projects />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/quizzer" >
+          <Route index element={<QuizzerHome />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
