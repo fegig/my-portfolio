@@ -123,8 +123,7 @@ function DeleteAccountRequest() {
             <div className="rounded-3xl border border-yellow-200 bg-yellow-50 p-8 shadow-sm">
               <h2 className="text-2xl font-bold text-neutral-900 text-center">Submit a Deletion Request</h2>
               <p className="mt-3 text-sm text-neutral-700 text-center max-w-2xl mx-auto">
-                Fill in the details below and submit the form. Your request will be sent securely to our backend service
-                at <span className="font-mono text-xs">quizzer-backend.fegigtech.workers.dev</span> for processing.
+                Fill in the details below and submit the form. Your request will be sent securely to us for processing.
               </p>
 
               <form onSubmit={handleSubmit} className="mt-6 space-y-4 max-w-xl mx-auto">
