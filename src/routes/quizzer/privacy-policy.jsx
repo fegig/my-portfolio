@@ -1,4 +1,5 @@
 import React from 'react'
+import QuizzerHeader from './QuizzerHeader'
 
 function PrivacyPolicy() {
   return (
@@ -7,33 +8,7 @@ function PrivacyPolicy() {
         <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-yellow-200/60 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-yellow-100/80 blur-3xl" />
 
-        <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-yellow-400 text-lg font-bold text-neutral-900 shadow-sm">
-              Q
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-yellow-600">Quizzer</p>
-              <p className="text-sm font-semibold text-neutral-700">Study. Play. Earn.</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-4 text-sm font-semibold">
-            <a
-              className="rounded-full border border-yellow-300 px-4 py-2 text-yellow-700 transition hover:bg-yellow-50"
-              href="/quizzer"
-            >
-              Back to Quizzer
-            </a>
-            <a
-              className="rounded-full bg-yellow-400 px-4 py-2 text-neutral-900 shadow-sm transition hover:bg-yellow-300"
-              href="https://play.google.com/store/apps/details?id=com.fegig.quizzer"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Get the App
-            </a>
-          </div>
-        </header>
+        <QuizzerHeader />
 
         <main className="mx-auto max-w-5xl px-6 pb-16">
           <section className="py-12">
@@ -136,7 +111,7 @@ function PrivacyPolicy() {
             </div>
 
             <div className="rounded-3xl border border-yellow-200 bg-white p-6 shadow-sm">
-              <h2 className="text-2xl font-bold text-neutral-900">8. Children’s Privacy</h2>
+              <h2 className="text-2xl font-bold text-neutral-900">8. Children?s Privacy</h2>
               <p className="mt-3 text-sm text-neutral-700">
                 Quizzer is not directed to children under 13. If you believe a child has provided personal information
                 without parental consent, please contact us so we can delete it.

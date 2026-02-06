@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import Home from './routes';
 import PrivacyPolicy from './routes/quizzer/privacy-policy';
 import QuizzerHome from './routes/quizzer/index';
+import DeleteAccount from './routes/quizzer/delete-account';
 import { useEffect } from 'react';
 import Aos from "aos";
 import 'aos/dist/aos.css';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/quizzer" >
           <Route index element={<QuizzerHome />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="delete-account" element={<DeleteAccount />} />
         </Route>
       </Routes>
     </BrowserRouter>
