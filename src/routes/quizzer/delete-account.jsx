@@ -3,7 +3,7 @@ import QuizzerHeader from './QuizzerHeader'
 
 function DeleteAccountRequest() {
   const [email, setEmail] = useState('')
-  const [displayName, setDisplayName] = useState('')
+  const [userTag, setUserTag] = useState('')
   const [region, setRegion] = useState('')
   const [message, setMessage] = useState('I confirm that I want my Quizzer account and associated data permanently deleted.')
   const [status, setStatus] = useState('idle') // idle | loading | success | error
@@ -22,7 +22,7 @@ function DeleteAccountRequest() {
         },
         body: JSON.stringify({
           email,
-          displayName,
+          userTag,
           region,
           message,
         }),
@@ -144,17 +144,17 @@ function DeleteAccountRequest() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-neutral-800 mb-1" htmlFor="displayName">
-                    Quizzer display name
+                  <label className="block text-sm font-medium text-neutral-800 mb-1" htmlFor="userTag">
+                    Quizzer user tag
                   </label>
                   <input
-                    id="displayName"
+                    id="userTag"
                     type="text"
                     required
-                    value={displayName}
-                    onChange={(e) => setDisplayName(e.target.value)}
+                    value={userTag}
+                    onChange={(e) => setUserTag(e.target.value)}
                     className="w-full rounded-2xl border border-yellow-200 bg-white px-4 py-3 text-sm text-neutral-900 shadow-sm outline-none transition focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200"
-                    placeholder="Name as shown in the app"
+                    placeholder="User tag as shown in the app"
                   />
                 </div>
 
