@@ -14,6 +14,16 @@ type ProjectType = {
 
 const projectList: ProjectType[] | undefined = [
   {
+    name: "Ootu academy",
+    type: "web",
+    description: "Ootu Academy is a platform for learning modern technologies meeting modern market demands all at affordable fees, connecting students to the right mentors and resources.",
+    stacks: [{ name: "React Router 7", icon: "rr7.png" }, { name: "Cloudflare Workers", icon: "cf.png" }, { name: "Hono", icon: "hono.png" }, { name: "TS", icon: "ts.png" },],
+    image: "/assets/shots/ootu-academy.png",
+    buttonColor: "#21181e",
+    link: "https://ootu.me",
+    status: "live"
+  },
+  {
     name: "Cellus by Eleastar (Web)",
     type: "web",
     description: "Cellus by Eleastar - Pay bills, stay connected, buy and sell assets, bank with Cryptocurrency and transfer cash, all in one app.",
@@ -33,16 +43,7 @@ const projectList: ProjectType[] | undefined = [
     link: "https://exdra.click",
     status: "live"
   },
-  {
-    name: "Ootu academy",
-    type: "web",
-    description: "Ootu Academy is a platform for learning modern technologies meeting modern market demands all at affordable fees, connecting students to the right mentors and resources.",
-    stacks: [{ name: "React Router 7", icon: "rr7.png" }, { name: "Cloudflare Workers", icon: "cf.png" }, { name: "Hono", icon: "hono.png" }, { name: "TS", icon: "ts.png" },],
-    image: "/assets/shots/ootu-academy.png",
-    buttonColor: "#21181e",
-    link: "https://dev.ootu.me",
-    status: "live"
-  },
+
   {
     name: "Coin 360 Concept",
     type: "web",
