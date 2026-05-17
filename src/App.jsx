@@ -1,20 +1,20 @@
-import './App.css'
-import 'aos/dist/aos.css';
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Home from './routes';
 import PrivacyPolicy from './routes/quizzer/privacy-policy';
 import QuizzerHome from './routes/quizzer/index';
 import DeleteAccount from './routes/quizzer/delete-account';
 import { useEffect } from 'react';
-import Aos from "aos";
-import 'aos/dist/aos.css';
 import Lenis from 'lenis'
+import Founder from './routes/founder';
+import ServicesPage from './routes/services';
+import ProjectsPage from './routes/projects';
+import AboutPage from './routes/about';
+import InsightsPage from './routes/insights';
+import ContactPage from './routes/contact';
+
 function App() {
 
   useEffect(()=>{
-    Aos.init();
-
-    // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -34,7 +34,6 @@ function App() {
 
     requestAnimationFrame(raf)
 
-    // Cleanup
     return () => {
       lenis.destroy()
     }
@@ -45,6 +44,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/insights" element={<InsightsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/founder" element={<Founder />} />
         <Route path="/quizzer" >
           <Route index element={<QuizzerHome />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />

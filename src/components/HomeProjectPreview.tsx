@@ -1,117 +1,24 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React from 'react'
+import { ArrowRight } from 'lucide-react'
+import { AnimatePresence, motion} from 'framer-motion';
+import { projectList, type ProjectType } from './Projects';
+import { Link } from 'react-router';
 
-export type ProjectType = {
-  name: string;
-  type: "web" | "mobile";
-  description: string;
-  stacks: { name: string; icon: string }[];
-  image: string;
-  buttonColor: string;
-  link: string;
-  status: "in-development" | "live";
+
+
+function Detail({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <dt className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground-200/70">{label}</dt>
+      <dd className="mt-1 text-sm leading-6 text-white">{value}</dd>
+    </div>
+  )
 }
 
-export const projectList: ProjectType[] | undefined = [
-  {
-    name: "Ootu academy",
-    type: "web",
-    description: "Ootu Academy is a platform for learning modern technologies meeting modern market demands all at affordable fees, connecting students to the right mentors and resources.",
-    stacks: [{ name: "React Router 7", icon: "rr7.png" }, { name: "Cloudflare Workers", icon: "cf.png" }, { name: "Hono", icon: "hono.png" }, { name: "TS", icon: "ts.png" },],
-    image: "/assets/shots/ootu-academy.png",
-    buttonColor: "#21181e",
-    link: "https://ootu.me",
-    status: "live"
-  },
-  {
-    name: "Cellus by Eleastar (Web)",
-    type: "web",
-    description: "Cellus by Eleastar - Pay bills, stay connected, buy and sell assets, bank with Cryptocurrency and transfer cash, all in one app.",
-    stacks: [{ name: "React JS", icon: "react.png" }, { name: "TS", icon: "ts.png" }, { name: "React Router 7", icon: "rr7.png" }, { name: "Tanstack Query", icon: "tq.png" }],
-    image: "/assets/shots/cellus-web.png",
-    buttonColor: "#052659",
-    link: "https://cellus.app",
-    status: "live"
-  },
-  {
-    name: "Exdra",
-    type: "web",
-    description: "Exdra offers seamless data bundles, airtime, TV subscriptions, and utility bill payments all as a family or clique package also request finance from any of your cliques.",
-    stacks: [{ name: "react", icon: "react.png" }, { name: "TS", icon: "ts.png" },],
-    image: "/assets/shots/exdra-web.png",
-    buttonColor: "#00c466",
-    link: "https://exdra.click",
-    status: "live"
-  },
-
-  {
-    name: "Coin 360 Concept",
-    type: "web",
-    description: "Coin360 Concept - Your Simplified Crypto & Gift Card Trading Hub, and also learn fx and other trading strategies.",
-    stacks: [{ name: "Svelte", icon: "svelte.png" }, { name: "TS", icon: "ts.png" },],
-    image: "/assets/shots/c360c.png",
-    buttonColor: "#3a061e",
-    link: "https://c360concept.com",
-    status: "live"
-  },
-  {
-    name: "Eleastar.com",
-    type: "web",
-    description: "Welcome to Eleastar Technologies Ltd official website, we are a software development company that specializes in building web and mobile applications.",
-    stacks: [{ name: "next js", icon: "next.png" }, { name: "JS", icon: "js.png" }],
-    image: "/assets/shots/eleastar.png",
-    buttonColor: "#052659",
-    link: "https://eleastar.com",
-    status: "live"
-  },
-  {
-    name: "Giov POS & Inventory Scanner (Mobile)",
-    type: "mobile",
-    description: "Giov POS & Inventory Scanner is a mobile app that allows you to manage your inventory and sales.",
-    stacks: [{ name: "react Native", icon: "RN.png" }, { name: "typescript", icon: "ts.png" },],
-    image: "/assets/shots/giov-screen.jpg",
-    buttonColor: "#052659",
-    link: "https://play.google.com/store/apps/details?id=com.fegig.giov.ecommerce&pcampaignid=web_share",
-    status: "live"
-  },
-  {
-    name: "Quizzer: Trivia, Study & Earn",
-    type: "mobile",
-    description: "Quizzer is a comprehensive platform that combines competitive exam preparation with the engagement of trivia gaming. Whether you are preparing for a job interview, studying for a standardized test, or looking to improve your general knowledge, Quizzer provides a structured and rewarding way to learn.",
-    stacks: [{ name: "react Native", icon: "RN.png" }, { name: "expo", icon: "expo.png" }, { name: "typescript", icon: "ts.png" },],
-    image: "/assets/shots/quizzer-shot.png",
-    buttonColor: "#052659",
-    link: "https://play.google.com/store/apps/details?id=com.fegig.quizzer&pcampaignid=web_share",
-    status: "live"
-  },
-  {
-    name: "Cellus by Eleastar (Mobile)",
-    type: "mobile",
-    description: "Cellus is a mobile app that allows you to manage your bank using cryptocurrency and bills and services.",
-    stacks: [{ name: "react Native", icon: "RN.png" }, { name: "expo", icon: "expo.png" }, { name: "typescript", icon: "ts.png" },],
-    image: "/assets/shots/cellus-mobile.png",
-    buttonColor: "#052659",
-    link: "https://cellus.app",
-    status: "in-development"
-  },
-  {
-    name: "Exdra (Mobile)",
-    type: "mobile",
-    description: "Exdra is a mobile app that allows you to manage your data bundles, airtime, TV subscriptions, and utility bill payments all as a family or clique package also request finance from any of your cliques.",
-    stacks: [{ name: "react Native", icon: "RN.png" }, { name: "expo", icon: "expo.png" }, { name: "typescript", icon: "ts.png" },],
-    image: "/assets/shots/exdra-mobile.png",
-    buttonColor: "#052659",
-    link: "https://exdra.click",
-    status: "in-development"
-  }
-]
-
-export default function Projects() {
-  const mobileProjects = projectList?.filter(p => p.type === "mobile") || []
-  const webProjects = projectList?.filter(p => p.type === "web") || []
-  const [currentMobileIndex, setCurrentMobileIndex] = useState(0)
-
-  const handleDragEnd = (event: any, info: any) => {
+export default function HomeProjectPreview() {
+  const mobileProjects = projectList?.filter(project => project.type === "mobile") || [];
+  const [currentMobileIndex, setCurrentMobileIndex] = React.useState(0);
+    const handleDragEnd = (event: any, info: any) => {
     const threshold = 50
     if (info.offset.x > threshold && currentMobileIndex > 0) {
       setCurrentMobileIndex(currentMobileIndex - 1)
@@ -123,21 +30,18 @@ export default function Projects() {
   const goToSlide = (index: number) => {
     setCurrentMobileIndex(index)
   }
-
   return (
-    <section className="bg-background-100 snap-start w-full py-20 px-4 md:px-8">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16" data-aos="fade-down" data-aos-offset="100" data-aos-easing="ease-in-sine">
-          <h2 className="tracking-wider text-4xl md:text-5xl font-bold text-foreground-100 mb-6">
-            Recent Projects
-          </h2>
-          <blockquote className="text-lg md:text-xl text-foreground-200 italic max-w-2xl mx-auto">
-            "Innovation distinguishes between a leader and a follower."
-            <span className="block mt-2 text-foreground-100 not-italic">— Steve Jobs</span>
-          </blockquote>
+    <section className="bg-background-100 px-4 py-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-5 pt-12 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="mt-4  text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl text-center ">
+              Mobile products built around real workflows.
+            </h2>
+          </div>
         </div>
 
-        {/* Mobile Projects Carousel */}
+           {/* Mobile Projects Carousel */}
         {mobileProjects.length > 0 && (
           <div className="my-20">
 
@@ -244,8 +148,7 @@ export default function Projects() {
                                   href={project.link}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="flex w-full min-h-[44px] items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-medium text-white transition-all duration-300 sm:inline-flex sm:w-auto sm:px-6 sm:text-base"
-                                  style={{ backgroundColor: project.buttonColor }}
+                                  className="bg-color-2 inline-flex min-h-8 items-center justify-center gap-2 rounded-lg px-6 py-2 text-xs font-medium text-white transition-all duration-300 "
                                   whileHover={{ scale: 1.02, y: -1 }}
                                   whileTap={{ scale: 0.98 }}
                                 >
@@ -394,117 +297,6 @@ export default function Projects() {
             </div>
           </div>
         )}
-
-
-        {/* Web Projects */}
-        <div className="space-y-12 md:space-y-16 mb-20">
-          {webProjects.map((project, i) => (
-            <div
-              key={i}
-              data-aos={i % 2 === 0 ? "fade-down" : "fade-up"}
-              data-aos-easing="ease-out-cubic"
-              className="group relative w-full overflow-hidden"
-            >
-              <div
-                className="relative overflow-hidden rounded-3xl border transition-all duration-500 ease-out"
-                style={{
-                  borderColor: `${project.buttonColor}40`,
-                  backgroundColor: 'rgba(240, 227, 222, 0.03)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 opacity-20 blur-2xl scale-110 transition-transform duration-700 group-hover:scale-125 group-hover:opacity-30"
-                  style={{
-                    backgroundImage: `url('${project.image}')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                  }}
-                />
-
-                <div className="absolute inset-0 bg-linear-to-br from-background-100/80 via-background-100/60 to-background-100/40 backdrop-blur-sm" />
-
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 md:p-10">
-                  <div className={`flex flex-col justify-center space-y-6 ${i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-
-                    <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
-                      <h3 className="font-bold text-2xl md:text-3xl text-white transition-colors duration-300">
-                        {project.name}
-                      </h3>
-                      {project.status === "in-development" && (
-                        <span className="inline-flex w-fit shrink-0 items-center rounded-full border border-amber-400/40 bg-amber-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-200">
-                          In development
-                        </span>
-                      )}
-                    </div>
-
-                    <p className="text-base md:text-lg text-foreground-200 font-light">
-                      {project.description}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-3">
-                      {project.stacks.map((stack, stackIndex) => (
-                        <div
-                          key={stackIndex}
-                          className="relative group/icon"
-                          data-aos="zoom-in"
-                        >
-                          <div className="w-10 h-10 md:w-12 md:h-12 p-2 rounded-lg bg-background-200/50 backdrop-blur-sm border border-foreground-100/10 transition-all duration-300 hover:scale-110 hover:border-foreground-100/30 hover:bg-background-200/70">
-                            <img
-                              src={`/icons/${stack.icon}`}
-                              alt={stack.name}
-                              className="w-full h-full object-contain grayscale transition-all duration-300 group-hover/icon:grayscale-0"
-                              title={stack.name}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="pt-2">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-white/20"
-                        style={{ backgroundColor: project.buttonColor }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'translateY(0)';
-                        }}
-                      >
-                        <span>Visit Site</span>
-                        <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className={`flex items-center justify-center ${i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                    <div
-                      className="relative w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
-                      data-aos="zoom-in"
-                      data-aos-delay="200"
-                      data-aos-duration="600"
-                    >
-                      <div className="absolute inset-0 bg-linear-to-t from-background-100/20 to-transparent z-10 pointer-events-none" />
-                      <img
-                        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                        src={project.image}
-                        alt={project.name}
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
 
       </div>
     </section>
