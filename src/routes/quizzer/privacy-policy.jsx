@@ -1,4 +1,3 @@
-import React from 'react'
 import QuizzerHeader from './QuizzerHeader'
 
 function PrivacyPolicy() {

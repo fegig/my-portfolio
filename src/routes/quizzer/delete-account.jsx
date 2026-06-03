@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import QuizzerHeader from './QuizzerHeader'
 
 function DeleteAccountRequest() {

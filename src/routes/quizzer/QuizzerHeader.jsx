@@ -1,5 +1,3 @@
-import React from 'react'
-
 function QuizzerHeader() {
   return (
     <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">

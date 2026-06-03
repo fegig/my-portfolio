@@ -5,3 +5,5 @@ Allow: /
 # Publisher declaration file for ad inventory (app-ads.txt)
 # Crawlers fetch this at: https://codewithfegig.com/app-ads.txt
 Allow: /app-ads.txt
+
+Sitemap: https://codewithfegig.com/sitemap.xml

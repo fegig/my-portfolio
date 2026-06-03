@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function PageHeader({ eyebrow, title, text }) {
   return (
     <section className="bg-background-100 px-4 pb-16 pt-32 sm:px-6 lg:px-8">

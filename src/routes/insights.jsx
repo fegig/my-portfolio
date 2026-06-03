@@ -1,4 +1,3 @@
-import React from 'react'
 import { ArrowRight } from 'lucide-react'
 import PageLayout from '../components/PageLayout'
 import PageHeader from '../components/PageHeader'
