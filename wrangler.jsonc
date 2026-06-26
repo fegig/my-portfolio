@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fegig-tech-ltd",
+  "compatibility_date": "2026-05-09",
+  "main": "./workers/app.ts",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": "./build/client"
+  },
+  "routes": [
+    {
+      "pattern": "codewithfegig.com",
+      "zone_name": "codewithfegig.com",
+      "custom_domain": true
+    }
+  ]
+}

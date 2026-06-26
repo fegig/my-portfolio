@@ -17,14 +17,14 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background-100/90 backdrop-blur-xl">
       <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="/" className="flex items-center gap-3" aria-label="FegigTech home">
+        <Link to="/" className="flex items-center gap-3" aria-label="FegigTech home">
           <img
             src="/assets/fegigtech-logo-mark.png"
             alt="FegigTech logo"
             className="h-9 w-9 rounded-xl object-contain"
           />
           <span className="text-xl font-bold tracking-tight text-white">FegigTech</span>
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
           {navItems.map((item) => (
@@ -38,13 +38,13 @@ export default function Navbar() {
           ))}
         </div>
 
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="hidden min-h-11 items-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.07] lg:inline-flex"
         >
           Start a Project
           <ArrowRight size={16} />
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -61,14 +61,14 @@ export default function Navbar() {
         <div className="border-t border-white/10 bg-background-100/95 px-4 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
           <div className="mx-auto grid max-w-7xl gap-2">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 onClick={() => setOpen(false)}
                 className="rounded-xl px-3 py-3 text-sm font-medium text-foreground-200 transition hover:bg-white/5 hover:text-white"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Link
               to="/contact"
