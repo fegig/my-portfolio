@@ -1,32 +1,41 @@
-import React from "react";
-
-const focusAreas = [
-  "Customer-facing platforms",
-  "Internal operations tools",
-  "Cloud-powered products",
+const operatingAreas = [
+  ["Customer systems", "Onboarding, commerce, payments, support"],
+  ["Team systems", "Dashboards, workflows, reporting, automation"],
+  ["Product foundations", "Architecture, cloud, integrations, release"],
 ];
 
 export default function Positioning() {
   return (
-    <section id="insights" className="bg-background-100 px-4 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl  py-7">
-        <div className="grid gap-10 lg:grid-cols-[0.86fr_1fr] lg:items-start">
-          <h2 className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Built for businesses that need more than just a website.
-          </h2>
+    <section className="bg-background-100 py-24 sm:py-32">
+      <div className="site-shell">
+        <div className="grid gap-12 lg:grid-cols-[0.38fr_1fr] lg:gap-20">
+          <p className="kicker pt-2">What we actually solve</p>
           <div>
-            <p className="text-lg leading-8 text-foreground-200">
-              Fegig Tech helps founders, teams, and organisations design, build, and launch reliable
-              digital systems, from customer-facing platforms to internal tools and cloud-powered products.
+            <h2 className="section-title max-w-[13ch]">
+              The difficult space between a business idea and a system people can{" "}
+              <span className="serif-accent text-color-3">trust.</span>
+            </h2>
+            <p className="copy-large mt-8 max-w-3xl">
+              We work where product decisions, interface design, engineering,
+              and live operations meet. The result is less hand-off theatre and
+              more ownership of the whole system.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {focusAreas.map((item) => (
-                <div key={item} className="border-l border-violet-300/45 pl-4">
-                  <p className="text-sm font-semibold text-white">{item}</p>
-                </div>
-              ))}
-            </div>
           </div>
+        </div>
+
+        <div className="mt-20 grid border-y border-white/15 md:grid-cols-3">
+          {operatingAreas.map(([title, detail], index) => (
+            <div
+              key={title}
+              className="border-b border-white/15 px-0 py-7 md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0"
+            >
+              <p className="font-mono text-[11px] text-color-alt">0{index + 1}</p>
+              <h3 className="mt-8 text-2xl font-medium tracking-[-0.035em] text-white">
+                {title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-foreground-200">{detail}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

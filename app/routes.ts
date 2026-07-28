@@ -8,4 +8,7 @@ export default [
   route("insights", "routes/insights.tsx"),
   route("contact", "routes/contact.tsx"),
   route("founder", "routes/founder.tsx"),
+  route("terms", "routes/terms.tsx"),
+  route("privacy", "routes/privacy.tsx"),
+  route("refund-policy", "routes/refund-policy.tsx"),
 ] satisfies RouteConfig;

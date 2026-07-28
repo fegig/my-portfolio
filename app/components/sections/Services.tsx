@@ -1,97 +1,78 @@
-import React from "react";
-import { BrainCircuit, Building2, CloudCog, Code2, Palette, Smartphone } from "lucide-react";
+import {
+  Boxes,
+  BrainCircuit,
+  Cloud,
+  MonitorSmartphone,
+  PanelsTopLeft,
+  Workflow,
+} from "lucide-react";
 
-const featured = [
+const services = [
   {
-    title: "Web & Product Platforms",
-    description:
-      "Customer portals, SaaS products, commerce flows, and business systems built to be fast, usable, and maintainable.",
-    proof: "React, Next.js, TypeScript, APIs, dashboards",
-    icon: Code2,
+    icon: Workflow,
+    name: "Product direction",
+    text: "Workflow mapping, requirements, delivery scope, architecture, and the decisions that stop an idea becoming an expensive pile of screens.",
+    output: "Maps · prototypes · technical direction",
   },
   {
-    title: "Mobile App Development",
-    description:
-      "Cross-platform iOS and Android products for teams that need dependable mobile workflows, not throwaway app screens.",
-    proof: "React Native, Expo, app store delivery, mobile UX",
-    icon: Smartphone,
+    icon: PanelsTopLeft,
+    name: "Web systems",
+    text: "Customer platforms, portals, operational dashboards, commerce, and content systems engineered for real use and continued change.",
+    output: "React · APIs · payments · integrations",
   },
-];
-
-const supporting = [
   {
-    title: "AI Solutions",
-    description: "Practical automations, assistants, and AI features connected to real business workflows.",
+    icon: MonitorSmartphone,
+    name: "Mobile products",
+    text: "Native-feeling iOS and Android experiences for customers, field teams, retail workflows, learning, and financial operations.",
+    output: "React Native · Expo · device workflows",
+  },
+  {
     icon: BrainCircuit,
+    name: "Applied AI",
+    text: "Assistants, retrieval, classification, summarisation, and automation placed inside an accountable business process.",
+    output: "AI workflows · human review · evaluation",
   },
   {
-    title: "Cloud & Infrastructure",
-    description: "Deployments, hosting, workers, storage, and operational setup for products that need to stay online.",
-    icon: CloudCog,
+    icon: Cloud,
+    name: "Cloud and release",
+    text: "Deployment architecture, data services, observability, performance, and the operational detail that makes software dependable.",
+    output: "Cloudflare · databases · release systems",
   },
   {
-    title: "UI/UX Design",
-    description: "Interfaces people can actually use, from product flows to admin tools and mobile screens.",
-    icon: Palette,
-  },
-  {
-    title: "Enterprise Software",
-    description: "Internal tools, reporting systems, and custom dashboards that support daily operations.",
-    icon: Building2,
+    icon: Boxes,
+    name: "Product renewal",
+    text: "Focused redesign and engineering for products slowed by UX debt, brittle code, poor information structure, or unclear workflows.",
+    output: "Audit · redesign · staged rebuilding",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="bg-background-100 px-4 py-28 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-violet-300">What We Do</p>
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Software that supports real operations
-          </h2>
-          <p className="mt-5 text-lg leading-8 text-foreground-200">
-            We focus on the parts of a product that make it useful after launch: clear flows, dependable
-            integrations, stable infrastructure, and code that can keep evolving.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {featured.map((service) => {
+    <section className="bg-background-100 pb-24 sm:pb-32">
+      <div className="site-shell">
+        <div className="border-t border-white/15">
+          {services.map((service, index) => {
             const Icon = service.icon;
-
             return (
               <article
-                key={service.title}
-                className="relative overflow-hidden rounded-3xl border border-white/10 bg-background-200/65 p-7 sm:p-8"
+                key={service.name}
+                className="grid gap-6 border-b border-white/15 py-8 md:grid-cols-[80px_0.65fr_1fr] md:gap-10 md:py-10"
               >
-                <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-violet-300/55 to-transparent" />
-                <div className="flex items-start gap-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/[0.04] text-violet-200">
-                    <Icon size={24} />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold tracking-tight text-white">{service.title}</h3>
-                    <p className="mt-4 text-base leading-7 text-foreground-200">{service.description}</p>
-                    <p className="mt-5 text-sm font-semibold text-violet-200">{service.proof}</p>
-                  </div>
+                <div className="flex items-center justify-between md:block">
+                  <p className="font-mono text-[11px] text-color-alt">0{index + 1}</p>
+                  <Icon size={20} strokeWidth={1.5} className="text-color-3 md:mt-10" />
                 </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {supporting.map((service) => {
-            const Icon = service.icon;
-
-            return (
-              <article key={service.title} className="border-t border-white/10 pt-6">
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] text-violet-200">
-                  <Icon size={21} />
+                <h2 className="text-3xl font-medium tracking-[-0.04em] text-white">
+                  {service.name}
+                </h2>
+                <div>
+                  <p className="max-w-2xl text-base leading-7 text-foreground-200">
+                    {service.text}
+                  </p>
+                  <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.09em] text-foreground-200/60">
+                    {service.output}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-white">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-foreground-200">{service.description}</p>
               </article>
             );
           })}

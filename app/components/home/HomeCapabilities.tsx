@@ -1,50 +1,60 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
 
 const capabilities = [
   {
-    label: '01',
-    title: 'Plan the product properly',
-    text: 'We help define the workflow, user journeys, technical requirements, and delivery plan before writing code.',
+    code: "Frame",
+    title: "Find the real product",
+    text: "We map the operation, the users, the data, and the commercial constraints before deciding what belongs on screen.",
   },
   {
-    label: '02',
-    title: 'Build the core system',
-    text: 'Web apps, mobile apps, APIs, AI features, dashboards, and integrations built around the real operation.',
+    code: "Build",
+    title: "Engineer the working core",
+    text: "Web apps, mobile apps, APIs, AI-assisted workflows, payments, dashboards, and integrations built as one system.",
   },
   {
-    label: '03',
-    title: 'Launch and improve',
-    text: 'Deployment, testing, support, and iteration so the product can keep moving after the first release.',
+    code: "Run",
+    title: "Make release the beginning",
+    text: "Cloud setup, quality checks, observability, support, and iteration keep the product useful after launch day.",
   },
-]
+];
 
 export default function HomeCapabilities() {
   return (
-    <section className="bg-background-100 px-4 py-24 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.72fr_1fr]">
+    <section className="bg-foreground-100 py-24 text-background-100 sm:py-32">
+      <div className="site-shell">
+        <div className="grid gap-12 lg:grid-cols-[0.62fr_1fr] lg:gap-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-violet-300">Company focus</p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
-              We build the useful middle between idea and operations.
+            <p className="kicker !text-color-2">The Fegig practice</p>
+            <h2 className="section-title mt-7 max-w-[9ch]">
+              One team from first map to live system.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-foreground-200">
-              Many businesses do not need another decorative website. They need software that helps customers act,
-              teams coordinate, data move clearly, and operations become easier to manage.
-            </p>
-            <a href="/services" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-violet-200 transition hover:text-white">
-              Explore services
-              <ArrowRight size={16} />
-            </a>
+            <Link
+              to="/services"
+              className="mt-9 inline-flex items-center gap-2 border-b border-background-100 pb-1 text-sm font-semibold"
+            >
+              Read the practice
+              <ArrowUpRight size={16} />
+            </Link>
           </div>
-
-          <div className="grid gap-0 border-y border-white/10">
-            {capabilities.map((item) => (
-              <article key={item.title} className="grid gap-4 border-b border-white/10 py-7 last:border-b-0 sm:grid-cols-[80px_1fr]">
-                <p className="text-sm font-bold text-foreground-200/60">{item.label}</p>
+          <div className="border-t border-background-100/30">
+            {capabilities.map((item, index) => (
+              <article
+                key={item.title}
+                className="grid gap-5 border-b border-background-100/30 py-8 sm:grid-cols-[90px_1fr]"
+              >
                 <div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-base leading-7 text-foreground-200">{item.text}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-background-100/60">
+                    0{index + 1} / {item.code}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-medium tracking-[-0.035em]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl leading-7 text-background-100/70">
+                    {item.text}
+                  </p>
                 </div>
               </article>
             ))}
@@ -52,5 +62,5 @@ export default function HomeCapabilities() {
         </div>
       </div>
     </section>
-  )
+  );
 }

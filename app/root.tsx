@@ -5,8 +5,21 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import type { LinksFunction } from "react-router";
+import type { LinksFunction, MetaFunction } from "react-router";
 import "./index.css";
+
+export const meta: MetaFunction = () => [
+  { name: "theme-color", content: "#10100f" },
+  { property: "og:type", content: "website" },
+  { property: "og:site_name", content: "Fegig Technologies" },
+  { property: "og:image", content: "https://codewithfegig.com/og.png" },
+  {
+    property: "og:image:alt",
+    content: "Fegig Technologies — Software that carries the work.",
+  },
+  { name: "twitter:card", content: "summary_large_image" },
+  { name: "twitter:image", content: "https://codewithfegig.com/og.png" },
+];
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", href: "/assets/fegigtech-logo-mark.png" },
@@ -18,7 +31,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap",
   },
 ];
 

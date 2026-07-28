@@ -1,47 +1,30 @@
-import React from "react";
-
-const steps = [
-  {
-    title: "Understand the business",
-    description: "We clarify the real workflow, users, constraints, and commercial goal before choosing a technical path.",
-  },
-  {
-    title: "Map the product architecture",
-    description: "We define the data model, integrations, infrastructure, and delivery plan so the product has a reliable foundation.",
-  },
-  {
-    title: "Design the user experience",
-    description: "We turn requirements into usable interfaces, practical flows, and product decisions people can understand.",
-  },
-  {
-    title: "Build and integrate",
-    description: "We ship production code, connect services, and keep implementation decisions visible throughout the build.",
-  },
-  {
-    title: "Test, launch, and support",
-    description: "We verify critical paths, deploy with care, monitor the product, and support the next iteration.",
-  },
+const stages = [
+  ["01", "Read the operation", "People, decisions, data, constraints, and what currently breaks."],
+  ["02", "Shape the product", "Flows, system boundaries, interface direction, and a delivery plan."],
+  ["03", "Build in working slices", "Usable releases, review loops, integration, and quality checks."],
+  ["04", "Release into reality", "Production setup, observation, support, and measured improvement."],
 ];
 
 export default function Process() {
   return (
-    <section id="process" className="bg-background-100 px-4 py-28 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.8fr_1fr]">
+    <section className="bg-foreground-100 py-24 text-background-100 sm:py-32">
+      <div className="site-shell">
+        <div className="grid gap-12 lg:grid-cols-[0.55fr_1fr] lg:gap-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-violet-300">Our Process</p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Consultative by default, practical by design
+            <p className="kicker !text-color-2">Delivery, without ceremony</p>
+            <h2 className="section-title mt-6 max-w-[9ch]">
+              Four movements. One accountable line.
             </h2>
           </div>
-          <div className="border-t border-white/10">
-            {steps.map((step, index) => (
-              <article key={step.title} className="grid gap-4 border-b border-white/10 py-7 sm:grid-cols-[96px_1fr]">
-                <div className="text-sm font-bold text-foreground-200/70">{String(index + 1).padStart(2, "0")}</div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">{step.title}</h3>
-                  <p className="mt-2 text-base leading-7 text-foreground-200">{step.description}</p>
-                </div>
+          <div className="border-t border-background-100/25">
+            {stages.map(([number, title, text]) => (
+              <article
+                key={number}
+                className="grid gap-4 border-b border-background-100/25 py-7 sm:grid-cols-[70px_0.6fr_1fr]"
+              >
+                <p className="font-mono text-[11px] text-background-100/60">{number}</p>
+                <h3 className="text-xl font-medium tracking-[-0.025em]">{title}</h3>
+                <p className="leading-7 text-background-100/70">{text}</p>
               </article>
             ))}
           </div>
