@@ -5,21 +5,35 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import type { LinksFunction, MetaFunction } from "react-router";
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "react-router";
 import "./index.css";
 
-export const meta: MetaFunction = () => [
-  { name: "theme-color", content: "#10100f" },
-  { property: "og:type", content: "website" },
-  { property: "og:site_name", content: "Fegig Technologies" },
-  { property: "og:image", content: "https://codewithfegig.com/og.png" },
-  {
-    property: "og:image:alt",
-    content: "Fegig Technologies — Software that carries the work.",
-  },
-  { name: "twitter:card", content: "summary_large_image" },
-  { name: "twitter:image", content: "https://codewithfegig.com/og.png" },
-];
+export function loader({ request }: LoaderFunctionArgs) {
+  return { origin: new URL(request.url).origin };
+}
+
+export const meta: MetaFunction<typeof loader> = ({ loaderData, location }) => {
+  const origin = loaderData?.origin ?? "https://codewithfegig.com";
+  const socialImage = `${origin}/og.png`;
+
+  return [
+    { name: "theme-color", content: "#10100f" },
+    { property: "og:type", content: "website" },
+    { property: "og:site_name", content: "Fegig Technologies" },
+    { property: "og:url", content: `${origin}${location.pathname}` },
+    { property: "og:image", content: socialImage },
+    {
+      property: "og:image:alt",
+      content: "Fegig Technologies — Software that carries the work.",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: socialImage },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", href: "/assets/fegigtech-logo-mark.png" },
