@@ -1,37 +1,25 @@
-import React from "react";
-import { ArrowRight, PhoneCall } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
 
 export default function CTA() {
   return (
-    <section className="bg-background-100 px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-3xl bg-linear-to-r from-violet-800 via-indigo-800 to-violet-900 p-8 sm:p-10 lg:p-12">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
-              Bring FegigTech into the build
-            </h2>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-violet-100/85">
-              Share what you want to build, improve, or replace. We will help shape it into software that can be shipped and maintained.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href="/contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-white px-6 text-sm font-bold text-violet-950 transition hover:-translate-y-0.5 hover:bg-violet-50"
-            >
-              Start a Project
-              <ArrowRight size={17} />
-            </a>
-            <a
-              href="tel:+2347062973352"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-white/45"
-            >
-              Schedule a Call
-              <PhoneCall size={17} />
-            </a>
-          </div>
+    <section className="bg-color-3 py-16 text-background-100 sm:py-20">
+      <div className="site-shell grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.11em]">
+            Have a system in mind?
+          </p>
+          <h2 className="mt-6 max-w-[12ch] text-5xl font-medium leading-[0.92] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+            Bring the messy version. We will find the product inside it.
+          </h2>
         </div>
+        <Link
+          to="/contact"
+          className="inline-flex min-h-14 items-center justify-center gap-2 bg-background-100 px-7 text-sm font-semibold text-white transition hover:bg-color-2"
+        >
+          Start a project brief
+          <ArrowUpRight size={17} />
+        </Link>
       </div>
     </section>
   );

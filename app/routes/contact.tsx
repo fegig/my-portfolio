@@ -1,107 +1,88 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import type { MetaFunction } from "react-router";
+import PageLayout from "../components/layout/PageLayout";
+import PageHeader from "../components/layout/PageHeader";
 
 export const meta: MetaFunction = () => [
-  { title: "Contact | FegigTech" },
-  { name: "description", content: "Contact FegigTech for web, mobile, AI, cloud, UI/UX, and enterprise software projects. Share what you want to build or improve." },
+  { title: "Start a Brief | Fegig Technologies" },
+  {
+    name: "description",
+    content:
+      "Start a software project brief with Fegig Technologies for web, mobile, applied AI, cloud systems, or product renewal.",
+  },
 ];
 
-import PageLayout from '../components/layout/PageLayout'
-import PageHeader from '../components/layout/PageHeader'
-
-const contactMethods = [
-  {
-    label: 'Email',
-    value: 'messageme@codewithfegig.com',
-    href: 'mailto:messageme@codewithfegig.com',
-    icon: Mail,
-  },
-  {
-    label: 'Phone',
-    value: '+234 706 297 3352',
-    href: 'tel:+2347062973352',
-    icon: Phone,
-  },
-  {
-    label: 'Location',
-    value: 'Abraka, Nigeria',
-    href: null,
-    icon: MapPin,
-  },
-]
-
-const projectTypes = [
-  'Company website or product platform',
-  'Mobile app for customers or field teams',
-  'AI automation or assistant workflow',
-  'Internal dashboard, portal, or reporting system',
-  'UI/UX redesign for an existing product',
-]
+const signals = [
+  "What currently happens, and where the process breaks",
+  "Who uses the system and what each person needs to decide",
+  "What exists already: links, screenshots, documents, or code",
+  "The timing or business event the work needs to support",
+];
 
 export default function ContactPage() {
   return (
     <PageLayout>
       <PageHeader
-        eyebrow="Contact"
-        title="Tell us what you want to build, improve, or replace."
-        text="Reach FegigTech for web, mobile, AI, cloud, UI/UX, and enterprise software projects. Share the goal, the current problem, and what success should look like."
+        eyebrow="Start a brief / 05"
+        title="Bring the operation, not a polished specification."
+        text="Tell us what people are trying to do, where the current process fails, and what must be true when the new system is working."
       />
 
-      <section className="bg-background-100 px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="space-y-5">
-            {contactMethods.map((method) => {
-              const Icon = method.icon
-              const content = (
-                <div className="flex items-start gap-4 border-t border-white/10 pt-5">
-                  <Icon size={20} className="mt-1 text-violet-300" />
-                  <div>
-                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-foreground-200/70">{method.label}</p>
-                    <p className="mt-1 text-lg font-semibold text-white">{method.value}</p>
-                  </div>
-                </div>
-              )
-
-              return method.href ? (
-                <a key={method.label} href={method.href} className="block transition hover:text-white">
-                  {content}
-                </a>
-              ) : (
-                <div key={method.label}>{content}</div>
-              )
-            })}
+      <section className="bg-background-100 pb-28 sm:pb-36">
+        <div className="site-shell grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+          <div className="border-t border-white/15">
+            <a
+              href="mailto:messageme@codewithfegig.com"
+              className="flex items-start gap-4 border-b border-white/15 py-6 transition hover:text-color-3"
+            >
+              <Mail size={19} className="mt-1 shrink-0" />
+              <span>
+                <span className="kicker block">Write</span>
+                <span className="mt-2 block text-lg">messageme@codewithfegig.com</span>
+              </span>
+            </a>
+            <a
+              href="tel:+2347062973352"
+              className="flex items-start gap-4 border-b border-white/15 py-6 transition hover:text-color-3"
+            >
+              <Phone size={19} className="mt-1 shrink-0" />
+              <span>
+                <span className="kicker block">Call</span>
+                <span className="mt-2 block text-lg">+234 706 297 3352</span>
+              </span>
+            </a>
+            <div className="flex items-start gap-4 border-b border-white/15 py-6">
+              <MapPin size={19} className="mt-1 shrink-0" />
+              <span>
+                <span className="kicker block">Base</span>
+                <span className="mt-2 block text-lg">Abraka, Nigeria</span>
+              </span>
+            </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-background-200/55 p-7 sm:p-8">
-            <h2 className="text-2xl font-black tracking-tight text-white">A helpful first message includes:</h2>
-            <ul className="mt-6 space-y-4 text-base leading-7 text-foreground-200">
-              <li>The product or business problem you want to solve.</li>
-              <li>Whether you need web, mobile, AI, cloud, design, or a full product build.</li>
-              <li>Existing links, screenshots, documents, or examples if available.</li>
-              <li>Your preferred timeline and what a successful launch should achieve.</li>
-            </ul>
+          <div>
+            <p className="kicker">A useful first note</p>
+            <ol className="mt-7 border-t border-white/15">
+              {signals.map((signal, index) => (
+                <li
+                  key={signal}
+                  className="grid gap-4 border-b border-white/15 py-6 sm:grid-cols-[55px_1fr]"
+                >
+                  <span className="font-mono text-[11px] text-color-alt">0{index + 1}</span>
+                  <span className="text-lg leading-7 text-foreground-100">{signal}</span>
+                </li>
+              ))}
+            </ol>
             <a
-              href="mailto:messageme@codewithfegig.com?subject=Project%20Inquiry%20for%20FegigTech"
-              className="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 text-sm font-bold text-background-100 transition hover:bg-violet-50"
+              href="mailto:messageme@codewithfegig.com?subject=Project%20brief%20for%20Fegig%20Technologies"
+              className="btn-primary mt-8"
             >
-              Start by Email
+              Open a project email
+              <ArrowUpRight size={17} />
             </a>
           </div>
         </div>
       </section>
-
-      <section className="bg-background-100 px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl border-y border-white/10 py-10">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-violet-300">Good project fit</p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {projectTypes.map((item) => (
-              <div key={item} className="border-l border-white/10 pl-4 text-sm leading-6 text-foreground-200">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </PageLayout>
-  )
+  );
 }

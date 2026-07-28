@@ -7,7 +7,7 @@ export default function PageLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background-100 text-foreground-100">
       <Navbar />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
     </div>
   )

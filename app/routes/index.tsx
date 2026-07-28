@@ -10,8 +10,10 @@ import Stacks from '../components/home/techStack';
 import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => [
-  { title: "FegigTech | Fegig Technologies Limited" },
-  { name: "description", content: "Fegig Technologies Limited builds scalable web, mobile, AI, cloud, and enterprise software solutions from Abraka, Nigeria." },
+  { title: "Fegig Technologies | Software that carries the work" },
+  { name: "description", content: "Fegig Technologies designs and engineers customer platforms, mobile tools, and internal systems from Abraka, Nigeria." },
+  { property: "og:title", content: "Fegig Technologies | Software that carries the work" },
+  { property: "og:description", content: "Customer platforms, mobile tools, and internal systems designed and engineered from Abraka, Nigeria." },
 ];
 
 function Home() {

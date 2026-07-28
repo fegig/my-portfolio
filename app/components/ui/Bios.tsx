@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function Bios() {
     const biosInfo = [
@@ -41,17 +41,9 @@ export default function Bios() {
       
 
     const [ActiveBios, setActiveBios] = useState<number>(1)
-    const [progress, setProgress] = useState<number>(100 / biosInfo?.length)
-
     const activeBiosInfo = biosInfo.find((bios) => bios.id === ActiveBios);
     const activeColor = activeBiosInfo ? activeBiosInfo.color : null;
-
-    useEffect(() => {
-        if (activeBiosInfo) {
-            const w = activeBiosInfo.id * 100 / biosInfo.length;
-            setProgress(w);
-        }
-    }, [activeBiosInfo]);
+    const progress = activeBiosInfo ? (activeBiosInfo.id * 100) / biosInfo.length : 0;
 
     return (
         <section className='bg-background-100 lg:py-16 pt-10 snap-start'>

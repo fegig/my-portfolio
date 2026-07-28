@@ -1,49 +1,47 @@
-import React, { useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Link, NavLink } from "react-router";
+import BrandMark from "./BrandMark";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
+  { label: "Practice", href: "/services" },
+  { label: "Selected work", href: "/projects" },
+  { label: "Studio", href: "/about" },
+  { label: "Field notes", href: "/insights" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background-100/90 backdrop-blur-xl">
-      <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-3" aria-label="FegigTech home">
-          <img
-            src="/assets/fegigtech-logo-mark.png"
-            alt="FegigTech logo"
-            className="h-9 w-9 rounded-xl object-contain"
-          />
-          <span className="text-xl font-bold tracking-tight text-white">FegigTech</span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-background-100/92 backdrop-blur-xl">
+      <nav className="site-shell flex h-[76px] items-center justify-between">
+        <Link to="/" aria-label="Fegig Technologies home">
+          <BrandMark />
         </Link>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
-            <Link
+            <NavLink
               key={item.label}
               to={item.href}
-              className="text-sm font-medium text-foreground-200 transition hover:text-white"
+              className={({ isActive }) =>
+                `text-sm font-medium transition ${
+                  isActive ? "text-white" : "text-foreground-200 hover:text-white"
+                }`
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
 
         <Link
           to="/contact"
-          className="hidden min-h-11 items-center gap-2 rounded-xl border border-white/12 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.07] lg:inline-flex"
+          className="hidden min-h-11 items-center gap-2 border-l border-white/20 pl-6 text-sm font-semibold text-white transition hover:text-orange-300 lg:inline-flex"
         >
-          Start a Project
-          <ArrowRight size={16} />
+          Start a brief
+          <ArrowUpRight size={16} />
         </Link>
 
         <button
@@ -51,31 +49,32 @@ export default function Navbar() {
           aria-label="Toggle navigation menu"
           aria-expanded={open}
           onClick={() => setOpen((current) => !current)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition hover:bg-white/10 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center border border-white/15 text-white transition hover:bg-white/5 lg:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-white/10 bg-background-100/95 px-4 py-5 shadow-2xl backdrop-blur-2xl lg:hidden">
-          <div className="mx-auto grid max-w-7xl gap-2">
+        <div className="border-t border-white/10 bg-background-100 px-5 py-6 lg:hidden">
+          <div className="mx-auto grid max-w-[1440px]">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-foreground-200 transition hover:bg-white/5 hover:text-white"
+                className="border-b border-white/10 py-4 text-lg font-medium text-foreground-200 transition hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               to="/contact"
-              className="mt-2 inline-flex min-h-6 items-center justify-center gap-2 rounded-xl border border-white/12 bg-white/5 px-5 text-xs font-semibold text-white"
+              onClick={() => setOpen(false)}
+              className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 bg-white px-5 text-sm font-semibold text-background-100"
             >
-              Start a Project
-              <ArrowRight size={16} />
+              Start a brief
+              <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>

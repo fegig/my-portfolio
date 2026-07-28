@@ -5,8 +5,35 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import type { LinksFunction } from "react-router";
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from "react-router";
 import "./index.css";
+
+export function loader({ request }: LoaderFunctionArgs) {
+  return { origin: new URL(request.url).origin };
+}
+
+export const meta: MetaFunction<typeof loader> = ({ loaderData, location }) => {
+  const origin = loaderData?.origin ?? "https://codewithfegig.com";
+  const socialImage = `${origin}/og.png`;
+
+  return [
+    { name: "theme-color", content: "#10100f" },
+    { property: "og:type", content: "website" },
+    { property: "og:site_name", content: "Fegig Technologies" },
+    { property: "og:url", content: `${origin}${location.pathname}` },
+    { property: "og:image", content: socialImage },
+    {
+      property: "og:image:alt",
+      content: "Fegig Technologies — Software that carries the work.",
+    },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: socialImage },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "icon", type: "image/png", href: "/assets/fegigtech-logo-mark.png" },
@@ -18,7 +45,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap",
   },
 ];
 
